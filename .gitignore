@@ -1,0 +1,78 @@
+# === Java / Maven ===
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.log
+
+# Compiled files
+target/
+out/
+
+# === IntelliJ IDEA ===
+.idea/
+*.iws
+*.ipr
+*.iml
+
+# === Spring Boot ===
+spring.log
+
+# === Angular ===
+/dist/
+/node_modules/
+/.angular/cache/
+
+# === OS Files ===
+.DS_Store
+Thumbs.db
+
+# === Logs ===
+*.log
+logs/
+*.pid
+
+# === Environment files ===
+.env
+*.env
+
+# === Temporary files ===
+*.tmp
+*.swp
+*.swo
+
+# === Coverage / reports ===
+/coverage/
+/test-results/
+/surefire-reports/
+/jacoco.exec
+
+# === VS Code (if using sometimes) ===
+.vscode/
+
+# === IDE auto-saves ===
+*.~*
+
+# === Build Tools ===
+/build/
+/bower_components/
+
+# === npm ===
+package-lock.json
+npm-debug.log
+
+# === Yarn ===
+yarn.lock
+.yarn/
+
+# === ESLint / Prettier ===
+.eslintcache
+.prettiercache
+
+# === Docker files ===
+*.bak
+docker-compose.override.yml
+
+# === Kubernetes / Helm ===
+*.tgz
