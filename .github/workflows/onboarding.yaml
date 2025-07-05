@@ -1,0 +1,48 @@
+name: Onboarding Microservice CI
+
+on:
+  push:
+    paths:
+      - 'onboarding-service/**'
+  pull_request:
+    paths:
+      - 'onboarding-service/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:14
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: ${{ secrets.DB_NAME }}
+          POSTGRES_USER: ${{ secrets.DB_USERNAME }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        options: >-
+          --health-cmd="pg_isready"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    defaults:
+      run:
+        working-directory: onboarding-service
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build
+        run: mvn clean install
+
+      - name: Run tests
+        run: mvn test
